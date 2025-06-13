@@ -1,0 +1,22 @@
+{
+  "lastName": "Carlos",
+  "firstName": "Roberto",
+  "postalAddress": "Calle de La estrella 1",
+  "postalZipCode": "28032-20202",
+  "phone": "(111) 111-11111",
+  "municipality": "Aguada",
+  "email": "hola@gmail.com",
+  "address": "Calle de la estrella 1",
+  "zipCode": "11111-11111",
+  "gender": "Male",
+  "birthDate": "3/29/2004",
+  "ssn": "111-11-11111",
+  "civilStatus": "Single",
+  "hireDate": "2/13/2024",
+  "contractType": "Part-Time",
+  "payrollGroup": "BIWEEKLY",
+  "paymentType": "Cash",
+  "profile": "SelfServiceManager",
+  "payRule": "Hourly 1/2hr After Reform",
+  "costCenter": "Cost Center 1"
+}

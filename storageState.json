@@ -1,0 +1,35 @@
+{
+  "cookies": [
+    {
+      "name": "ASP.NET_SessionId",
+      "value": "rnnkhc0on2mnsk5uwtfitzjh",
+      "domain": "elyp.intechsol-pr.net",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "ElysiumLanguage",
+      "value": "0",
+      "domain": "elyp.intechsol-pr.net",
+      "path": "/",
+      "expires": 1784376900.893419,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "selectedCompany66237",
+      "value": "10",
+      "domain": "elyp.intechsol-pr.net",
+      "path": "/",
+      "expires": 1781352904.006227,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    }
+  ],
+  "origins": []
+}
