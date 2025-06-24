@@ -4,26 +4,35 @@ echo Verificando entorno...
 echo ===========================
 
 if not exist "nodejs" (
-    echo ❌ Error: Falta la carpeta "nodejs"
+    echo Error: Falta la carpeta "nodejs"
     pause
     exit /b 1
 )
 
-if not exist ".env" (
-    echo ⚠️ Aviso: No se encontró el archivo ".env"
-) else (
-    echo ✅ Archivo ".env" encontrado
+:: Verifica package.json
+if not exist "package.json" (
+    echo Falta el archivo "package.json"
+    pause
+    exit /b 1
 )
 
+:: Instala dependencias si no existen
 if not exist "node_modules" (
-    echo ❌ Error: Falta la carpeta "node_modules" con las dependencias instaladas
-    pause
-    exit /b 1
+    echo  Instalando dependencias (esto puede tardar un poco)...
+    .\nodejs\npm.cmd install
+    if errorlevel 1 (
+        echo  Fallo al instalar dependencias
+        pause
+        exit /b 1
+    )
+) else (
+    echo  Dependencias ya están instaladas
 )
 
-echo ✅ Todo listo. Puedes ejecutar los tests cuando quieras con:
+echo  Todo listo. Puedes ejecutar los tests cuando quieras con:
 echo.
-echo     .\nodejs\node.exe .\node_modules\.bin\playwright test --> Para ejecutar todos los tests
-echo     .\nodejs\node.exe .\node_modules\.bin\playwright test <nombre_del_test> --> Para ejecutar un test específico
+echo     .\nodejs\npx.cmd playwright test // Ejecuta todos los tests
+echo o bien:
+echo     .\nodejs\npx.cmd playwright test tests\ESS.spec.ts // Ejecuta un test específico
 echo.
 pause

@@ -1,7 +1,10 @@
 import { test, expect } from '@playwright/test';
-import dotenv from 'dotenv';
-dotenv.config();
+import dotenv from 'dotenv'; // Importa dotenv para manejar las variables de entorno
+dotenv.config(); // Carga las variables de entorno desde el archivo .env
 
+if (!process.env.BASE_URL || !process.env.USER || !process.env.PASSWORD) {
+  throw new Error('Faltan variables de entorno: BASE_URL, USER o PASSWORD');
+} // Verifica que las variables de entorno necesarias estén definidas
 
 test.describe('Pruebas de Automatización', () => {
 

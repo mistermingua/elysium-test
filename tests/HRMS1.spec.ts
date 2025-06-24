@@ -3,7 +3,7 @@ import dotenv from 'dotenv'; // Importa dotenv para manejar variables de entorno
 dotenv.config(); // Carga las variables de entorno desde el archivo .env
 
 if (!process.env.BASE_URL || !process.env.USER || !process.env.PASSWORD) {
-  throw new Error('Faltan variables de entorno: BASE_URL, USERNAME o PASSWORD');
+  throw new Error('Faltan variables de entorno: BASE_URL, USER o PASSWORD');
 } // Verifica que las variables de entorno necesarias estén definidas
 // Si no están definidas, lanza un error para evitar que el test se ejecute sin la configuración correcta
 

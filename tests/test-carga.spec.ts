@@ -1,12 +1,14 @@
-import { chromium } from '@playwright/test';
+import { test, chromium } from '@playwright/test';
 
-(async () => {
+
+test.describe('Test de Carga', () => {
+test('Test',async () => {
   const browser = await chromium.launch({ headless: false });
   const context = await browser.newContext();
   const page = await context.newPage();
 
   const start = Date.now();
-  const response = await page.goto('https://elyp.intechsol-pr.net', { timeout: 20000 });
+  const response = await page.goto('https://elysium.intechsol-pr.net', { timeout: 20000 });
   const time = Date.now() - start;
 
   console.log(`⏱️ Tiempo de carga: ${time} ms`);
@@ -14,4 +16,6 @@ import { chromium } from '@playwright/test';
 
   await page.waitForTimeout(3000);
   await browser.close();
-})();
+});
+});
+

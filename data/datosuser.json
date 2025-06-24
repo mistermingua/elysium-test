@@ -16,7 +16,7 @@
   "contractType": "Part-Time",
   "payrollGroup": "BIWEEKLY",
   "paymentType": "Cash",
-  "profile": "SelfServiceManager",
+  "profile": "Portal Administrator",
   "payRule": "Hourly 1/2hr After Reform",
-  "costCenter": "Cost Center 1"
+  "costCenter": "Cost Center 2"
 }

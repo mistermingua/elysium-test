@@ -77,7 +77,7 @@ await page.waitForTimeout(1500);
   await page.waitForTimeout(1500); 
   await page.getByRole('option', { name: user.municipality }).click(); // Poner aqui el municipio del usuario que se va a crear
 
-await page.waitForTimeout(1500); 
+  await page.waitForTimeout(1500); 
 
   await page.locator('div:nth-child(6) > div:nth-child(2) > span > .k-dropdown-wrap > .k-input').first().click();
   await page.waitForTimeout(1500); 
@@ -86,69 +86,88 @@ await page.waitForTimeout(1500);
   // En el caso de que sea mujer poner:
   //await page.getByRole('option', { name: 'Female' }).click();
   
-  await page.waitForTimeout(1500); 
+  //await page.waitForTimeout(1500); 
     
   await page.getByRole('combobox', { name: 'Birth Date*' }).click();
   await page.getByRole('combobox', { name: 'Birth Date*' }).fill(user.birthDate); // Poner aqui la fecha de nacimiento del usuario que se va a crear
   
-  await page.waitForTimeout(1500); 
+  //await page.waitForTimeout(2000); 
   
   await page.getByRole('textbox', { name: 'Social Security*' }).click();
   await page.getByRole('textbox', { name: 'Social Security*' }).fill(user.ssn); // Poner aqui el numero de seguro social del usuario que se va a crear
   
-  await page.waitForTimeout(1500); 
+  
     
   await page.locator('.form-group > div:nth-child(3) > span > .k-dropdown-wrap > .k-input').first().click();
-  await page.waitForTimeout(1500); 
+  await page.waitForSelector(`role=option[name="${user.civilStatus}"]`, { state: 'visible', timeout: 10000 });
+
   await page.getByRole('option', { name: user.civilStatus }).click(); // Poner el estado civil en name, entre: 'Single', 'Married', 'Widowed', 'Not Specific'
-  await page.waitForTimeout(1500); 
+ // await page.waitForTimeout(1500); 
   await page.getByRole('link', { name: 'PERSONAL INFORMATION ' }).click();
 
+await page.waitForTimeout(2000); // Esperar que el menu de arriba se cierre para abir el de abajo
+
   await page.getByRole('link', { name: 'SETTINGS ' }).click();
-  await page.waitForTimeout(1500); 
+  //await page.waitForTimeout(1500); 
   await page.getByRole('combobox', { name: 'Hire Date*' }).click();
   await page.getByRole('combobox', { name: 'Hire Date*' }).fill(user.hireDate); // Poner aqui la fecha de contratacion del usuario que se va a crear
   
-  await page.waitForTimeout(1500); 
+  //await page.waitForTimeout(1500); 
   
   await page.locator('div:nth-child(4) > div:nth-child(2) > span > .k-dropdown-wrap > .k-input').first().click();
-  await page.waitForTimeout(1500); 
+  //await page.waitForTimeout(1500); 
+  await page.waitForSelector(`role=option[name="${user.contractType}"]`, { state: 'visible' });
+
   await page.getByRole('option', { name: user.contractType }).click(); // Poner el tipo de contrato correspondiente.
 
-  await page.waitForTimeout(1500); 
+  //await page.waitForTimeout(1500); 
   
   await page.locator('div:nth-child(6) > .col-md-8 > span > .k-dropdown-wrap > .k-input').first().click();
-  await page.waitForTimeout(1500); 
+  //
+  // await page.waitForTimeout(1500); 
+
+  await page.waitForSelector(`role=option[name="${user.payrollGroup}"]`, { state: 'visible'});
+
   await page.getByRole('option', { name: user.payrollGroup }).click(); // Poner el grupo de nomina correspondiente.
   
-  await page.waitForTimeout(1500); 
+  //await page.waitForTimeout(1500); 
 
   await page.getByRole('listbox', { name: 'Payment Type*' }).locator('span').nth(1).click();
-  await page.waitForTimeout(1500); 
+  //
+  // await page.waitForTimeout(1500); 
+  await page.waitForSelector(`role=option[name="${user.paymentType}"]`, { state: 'visible', timeout: 10000 });
+
   await page.getByRole('option', { name: user.paymentType }).click(); // Poner el tipo de pago correspondiente.
   
-  await page.waitForTimeout(1500); 
+  //await page.waitForTimeout(1500); 
 
   await page.getByRole('listbox', { name: 'Profile*' }).locator('span').nth(1).click();
-  await page.waitForTimeout(1500); 
+  await page.waitForSelector(`role=option[name="${user.profile}"]`, { state: 'visible' });
+
+  // await page.waitForTimeout(1500); 
   await page.getByRole('option', { name: user.profile }).click(); // Poner el perfil correspondiente.
   
-  await page.waitForTimeout(1500); 
+  //await page.waitForTimeout(1500); 
     
   await page.locator('div:nth-child(3) > div:nth-child(2) > .col-md-8 > span > .k-dropdown-wrap > .k-input').click();
-  await page.waitForTimeout(1500); 
+//  await page.waitForTimeout(1500); 
+  await page.waitForSelector(`role=option[name="${user.payRule}"]`, { state: 'visible'});
   await page.getByRole('option', { name: user.payRule }).click(); // Regla de pago correspondiente.
 
-await page.waitForTimeout(1500); 
+// await page.waitForTimeout(1500); 
 
   await page.getByRole('listbox', { name: 'Cost Center' }).locator('span').nth(1).click();
-  await page.waitForTimeout(1500); 
+  //await page.waitForTimeout(1500);
+await page.waitForSelector(`role=option[name="${user.costCenter}"]`, { state: 'visible'});
+
   await page.getByRole('option', { name: user.costCenter }).click(); //Selecciona el centro de costo correspondiente.
-  await page.waitForTimeout(1500); 
+  
+  await page.waitForTimeout(1000); 
+  
   await page.getByRole('link', { name: 'SETTINGS ' }).click();
   //await page.getByRole('link', { name: 'CUSTOM FIELDS ' }).click();
   //await page.getByRole('link', { name: 'BANK INFORMATION ' }).click();
-  await page.waitForTimeout(1500); 
+  await page.waitForTimeout(1000); 
   await page.getByText('Save', { exact: true }).click();
     await page.waitForTimeout(3000); // Espera 3 segundos para que se guarde el usuario y salga el mensaje de exito
   await page.getByRole('button', { name: ' Go to profile' }).click();
