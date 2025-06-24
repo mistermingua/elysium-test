@@ -10,7 +10,7 @@ if (!process.env.BASE_URL || !process.env.USER || !process.env.PASSWORD) {
 test.use({ storageState: 'storageState.json' });
 
 test.describe('Pruebas ESS', () => {
-test('ESS despues de login', async ({ page }) => {
+test('Modulo ESS', async ({ page }) => {
   const baseUrl = process.env.BASE_URL!;
   const response = await page.goto(`${baseUrl}/MyEss/Home/Index/955`);
   expect(response?.status()).toBe(200); // Verifica que la respuesta sea 200 OK
