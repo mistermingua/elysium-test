@@ -26,22 +26,22 @@ test('test', async ({ page }) => {
     await page.getByRole('textbox', { name: 'Last Name*' }).fill(user.lastName);
 
     // First Name
-    await page.waitForSelector('input[name="First Name*"]', { state: 'visible' });
+   // await page.waitForSelector('input[name="First Name*"]', { state: 'visible' });
     await page.getByRole('textbox', { name: 'First Name*' }).click();
     await page.getByRole('textbox', { name: 'First Name*' }).fill(user.firstName);
 
     // Postal Address
-    await page.waitForSelector('#EmpPostalAddress', { state: 'visible' });
+    //await page.waitForSelector('#EmpPostalAddress', { state: 'visible' });
     await page.locator('#EmpPostalAddress').click();
     await page.locator('#EmpPostalAddress').fill(user.postalAddress);
 
     // Postal Zip Code
-    await page.waitForSelector('#EmpPostalZipCode', { state: 'visible' });
+    //await page.waitForSelector('#EmpPostalZipCode', { state: 'visible' });
     await page.locator('#EmpPostalZipCode').click();
     await page.locator('#EmpPostalZipCode').fill(user.postalZipCode);
 
     // Phone
-    await page.waitForSelector('input[name="Home"]', { state: 'visible' });
+    //await page.waitForSelector('input[name="Home"]', { state: 'visible' });
     await page.getByRole('textbox', { name: 'Home' }).click();
     await page.getByRole('textbox', { name: 'Home' }).fill(user.phone);
 
@@ -52,12 +52,12 @@ test('test', async ({ page }) => {
     await page.getByRole('option', { name: user.municipality }).click();
 
     // Address
-    await page.waitForSelector('#EmpAddress', { state: 'visible' });
+    //await page.waitForSelector('#EmpAddress', { state: 'visible' });
     await page.locator('#EmpAddress').click();
     await page.locator('#EmpAddress').fill(user.address);
 
     // Zip Code
-    await page.waitForSelector('#EmpZipCode', { state: 'visible' });
+    //await page.waitForSelector('#EmpZipCode', { state: 'visible' });
     await page.locator('#EmpZipCode').click();
     await page.locator('#EmpZipCode').fill(user.zipCode);
 
@@ -80,20 +80,23 @@ test('test', async ({ page }) => {
     // Si es mujer, usa: await page.getByRole('option', { name: 'Female' }).click();
 
     // Birth Date
-    await page.waitForSelector('input[role="combobox"][name="Birth Date*"]', { state: 'visible' });
+   // await page.waitForSelector('input[role="combobox"][name="Birth Date*"]', { state: 'visible' });
     await page.getByRole('combobox', { name: 'Birth Date*' }).click();
     await page.getByRole('combobox', { name: 'Birth Date*' }).fill(user.birthDate);
 
     // Social Security
-    await page.waitForSelector('input[name="Social Security*"]', { state: 'visible' });
+  //  await page.waitForSelector('input[name="Social Security*"]', { state: 'visible' });
     await page.getByRole('textbox', { name: 'Social Security*' }).click();
     await page.getByRole('textbox', { name: 'Social Security*' }).fill(user.ssn);
 
     // Civil Status
-    await page.waitForSelector('.form-group > div:nth-child(3) > span > .k-dropdown-wrap > .k-input', { state: 'visible' });
+    //await page.waitForSelector('.form-group > div:nth-child(3) > span > .k-dropdown-wrap > .k-input', { state: 'visible' });
     await page.locator('.form-group > div:nth-child(3) > span > .k-dropdown-wrap > .k-input').first().click();
     await page.waitForSelector(`role=option[name="${user.civilStatus}"]`, { state: 'visible', timeout: 10000 });
     await page.getByRole('option', { name: user.civilStatus }).click();
+
+  await page.waitForTimeout(1000);
+
 
     // PERSONAL INFORMATION
     await page.waitForSelector('a[role="link"][name="PERSONAL INFORMATION "]', { state: 'visible' });

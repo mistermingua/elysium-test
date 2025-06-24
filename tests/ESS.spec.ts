@@ -15,7 +15,7 @@ test('Modulo ESS', async ({ page }) => {
   const response = await page.goto(`${baseUrl}/MyEss/Home/Index/955`);
   expect(response?.status()).toBe(200); // Verifica que la respuesta sea 200 OK
   
-  await page.waitForTimeout(2000);
+  await page.waitForTimeout(1000);
 
   await page.getByRole('link', { name: 'imageAdministrator' }).click();
     await page.waitForTimeout(1000);
