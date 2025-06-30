@@ -2,7 +2,7 @@
   "cookies": [
     {
       "name": "ASP.NET_SessionId",
-      "value": "3mbcnyppsvylrzqrlzbnu5tr",
+      "value": "vbhzmlot5spvk3zbjytzqse5",
       "domain": "elysium.intechsol-pr.net",
       "path": "/",
       "expires": -1,
@@ -15,7 +15,7 @@
       "value": "0",
       "domain": "elysium.intechsol-pr.net",
       "path": "/",
-      "expires": 1785272213.414217,
+      "expires": 1785867650.08413,
       "httpOnly": false,
       "secure": false,
       "sameSite": "Lax"
@@ -25,7 +25,7 @@
       "value": "10",
       "domain": "elysium.intechsol-pr.net",
       "path": "/",
-      "expires": 1782248215.054854,
+      "expires": 1782843653.039917,
       "httpOnly": false,
       "secure": false,
       "sameSite": "Lax"

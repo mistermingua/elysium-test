@@ -10,7 +10,7 @@
   "zipCode": "11111-11111",
   "gender": "Male",
   "birthDate": "3/29/2004",
-  "ssn": "333-22-77778",
+  "ssn": "111-11-111117",
   "civilStatus": "Single",
   "hireDate": "2/13/2024",
   "contractType": "Part-Time",
@@ -18,11 +18,5 @@
   "paymentType": "Cash",
   "profile": "Portal Administrator",
   "payRule": "Hourly 1/2hr After Reform",
-  "costCenter": "Cost Center 2",
-
-  "badgeNumber": "15",
-  "identificationNumber": "15",
-  "userName": "15",
-
-  "FechaPayCode": "2/13/2024"
+  "costCenter": "Cost Center 2"
 }
