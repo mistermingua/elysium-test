@@ -1,9 +1,15 @@
 import fs from 'fs';
 import { chromium, expect } from '@playwright/test';
-import dotenv from 'dotenv';
 import path from 'path';
 
-dotenv.config();
+
+
+import 'dotenv/config'; // Esto lo que me permite es poder elegir con que archivo .env quiero trabajar
+
+//import dotenv from 'dotenv';  
+//dotenv.config();  // Estos dos comandos lo que hacen es cargar un unico archivo .env, el cual contiene las variables de entorno que se van a utilizar en el test
+
+
 
 const STORAGE_PATH = path.join(__dirname, 'storageState.json');
 const MAX_RETRIES = 3;
