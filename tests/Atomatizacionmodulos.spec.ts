@@ -1,6 +1,11 @@
 import { test, expect } from '@playwright/test'; // Importa las librerías necesarias de Playwright
+
+//import 'dotenv/config'; 
+
 import dotenv from 'dotenv'; // Importa dotenv para manejar variables de entorno (archivo .env)
 dotenv.config(); // Carga las variables de entorno desde el archivo .env
+
+
 import fs from 'fs'; // Importa el módulo fs para manejar archivos del sistema
 import path from 'path'; // Importa el módulo path para manejar rutas de archivos
 
