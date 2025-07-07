@@ -24,23 +24,24 @@ test('Creacion de Payroll', async ({ page }) => {
         timeout: 5000 
     });    
 
+await page.waitForTimeout(5000);
 
   await page.getByRole('link', { name: ' ADD NEW PAYROLL BATCH' }).click();
   await page.locator('#PayrollBatchModelDiv').getByText('Select').first().click();
   // esperar a que se visible el texto siguiente Extraordinary o Normal
-  await page.waitForSelector('#PayrollBatchModelDiv >> text=Extraordinary', { // Cambiar el texto en función de lo que necesites
-    state: 'visible',
-    timeout: 5000 // Espera hasta 5 segundos para que el texto sea visible
-  });
+  //await page.waitForSelector('#PayrollBatchModelDiv >> text=Extraordinary', { // Cambiar el texto en función de lo que necesites
+  //  state: 'visible',
+  //  timeout: 5000 // Espera hasta 5 segundos para que el texto sea visible
+  //});
 
   await page.getByRole('option', { name: 'Extraordinary' }).click(); // Selecciona la opción "Extraordinary" o "Normal" según sea necesario
   
 
-  await page.locator('#PayrollBatchModelDiv').getByText('Select', { exact: true }).click();
-  await page.waitForSelector('#PayrollBatchModelDiv >> text=Christmas Bonus', { // Cambiar el texto en función de lo que necesites
-    state: 'visible',
-    timeout: 5000 // Espera hasta 5 segundos para que el texto sea visible
-  });
+  //await page.locator('#PayrollBatchModelDiv').getByText('Select', { exact: true }).click();
+  //await page.waitForSelector('#PayrollBatchModelDiv >> text=Christmas Bonus', { // Cambiar el texto en función de lo que necesites
+  //  state: 'visible',
+  //  timeout: 5000 // Espera hasta 5 segundos para que el texto sea visible
+  //});
   await page.getByRole('option', { name: 'Christmas Bonus' }).click(); //elegir la opción "Christmas Bonus" o la que necesites
 
   await page.getByRole('combobox', { name: 'Dates Payment Date' }).click();
@@ -54,19 +55,19 @@ test('Creacion de Payroll', async ({ page }) => {
   
   await page.locator('#PayrollBatchModelDiv').getByText('Timesheet', { exact: true }).click();
   // Espera a que la opcion deseada aparezca en el selector
-  await page.waitForSelector('#PayrollBatchModelDiv >> text=Timesheet', { // Cambiar el texto en función de lo que necesites
-    state: 'visible',
-    timeout: 5000 // Espera hasta 5 segundos para que el texto sea visible
-  });
+  //await page.waitForSelector('#PayrollBatchModelDiv >> text=Timesheet', { // Cambiar el texto en función de lo que necesites
+  //  state: 'visible',
+  //  timeout: 5000 // Espera hasta 5 segundos para que el texto sea visible
+  //});
 
   await page.getByRole('option', { name: 'Timesheet' }).click(); //Sleccionar la opcion apropieda 'FILE', 'None', 'Timesheet', etc.
 
   await page.locator('#divTimecard').getByText('Employees with Class assigned').click();
   // Espera a que la opcion deseada aparezca en el selector
-    await page.waitForSelector('#divTimecard >> text=Employees with Class assigned', { // Cambiar el texto en funcion de lo que necesites
-        state: 'visible',
-        timeout: 5000 // Espera hasta 5 segundos para que el texto sea visible
-    });
+  //  await page.waitForSelector('#divTimecard >> text=Employees with Class assigned', { // Cambiar el texto en funcion de lo que necesites
+  //      state: 'visible',
+  //      timeout: 5000 // Espera hasta 5 segundos para que el texto sea visible
+  //  });
 
   await page.getByRole('option', { name: 'Current Employee Selection' }).click(); // Selecciona la opción "Current Employee Selection" o la que necesites
 
