@@ -38,12 +38,12 @@ test('Test HRMS', async ({ page }) => {
   //await page.getByText('HRMS', { exact: true }).hover();
   //await page.getByText('HRMS').hover();
 
-  await page.goto(`${baseUrl}/CoreApp/Evaluations/Index/1254`);
+  await page.goto(`${baseUrl}CoreApp/Evaluations/Index/1254`);
   await page.waitForTimeout(2000); // Espera 2 segundos para que se cargue la página
   //await page.locator('span').filter({ hasText: /^HRMS$/ }).locator('span').hover();
 
   //await page.getByRole('link', { name: 'Evaluations' }).click();
   
-  await page.waitForTimeout(4000);
+  
 });
 });

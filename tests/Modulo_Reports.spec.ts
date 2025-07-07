@@ -10,7 +10,6 @@ test.use({ storageState: 'storageState.json' });
 
 test('test', async ({ page }) => {
   const baseUrl = process.env.BASE_URL!;
-
   const response = await page.goto(`${baseUrl}/CoreApp/Reports/Index/356`);
   expect(response?.status()).toBe(200);
   await page.waitForTimeout(2000);
@@ -92,4 +91,5 @@ test('test', async ({ page }) => {
   await page.getByRole('button', { name: 'Close' }).click();
   await page.getByText('» Weekly Schedule').click();
   await page.getByRole('button', { name: 'Close' }).click();
+  
 });

@@ -32,10 +32,13 @@ test('Verificacion de todas las URLs ', async ({ page }) => {
 
 //const errores: string[] = []; // Array para almacenar errores de estado de las URLs
 
-  for (const url of urls) { // Itera sobre cada URL en el archivo JSON
+  for (const ruta of urls) { // Itera sobre cada ruta en el archivo JSON
+    const url = ruta.startsWith('http') ? ruta : `${baseUrl}${ruta}`;
     const response = await page.goto(url);
-    const status = response?.status();
-        console.log(`Visitando: ${url} → Estado: ${status}`);
+    // Para que falle el test si alguna URL no responde con 200
+    expect(response?.status()).toBe(200);
+    //const status = response?.status();
+    //console.log(`Visitando: ${url} → Estado: ${status}`);
 
     //if (status !== 200) {
     //  errores.push(` ${url} → Estado: ${status}`); // esto era para guardar los errores en un array
