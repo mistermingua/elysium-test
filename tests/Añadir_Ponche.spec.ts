@@ -57,7 +57,7 @@ await page.waitForTimeout(1000);
     await page.locator('tr:nth-child(4) > td:nth-child(3)').first().click();
   await page.getByRole('option', { name: 'Vacation' }).click();
   await page.getByRole('gridcell', { name: '0', exact: true }).click();
-  await page.locator('#PaycodeAmount').fill(user.FechaPayCode); 
+  await page.locator('#PaycodeAmount').fill(user.FechaPayCode); // Rellena el campo con la fecha del pay code
   await page.getByText('SAVE', { exact: true }).click();
 
 
