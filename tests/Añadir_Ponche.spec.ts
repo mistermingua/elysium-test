@@ -32,35 +32,132 @@ test('test', async ({ page }) => {
   
   await page.getByText('Employee Selection', { exact: true }).click();
   await page.waitForTimeout(1000);
+   await page.locator('#txtHyperfinCondition').click(); // Hacemos click en el campo de búsqueda de empleados
+  await page.locator('#txtHyperfinCondition').fill(user.lastName); // Cambiamos el nombre del empleado por el que se quiera buscar
+  await page.waitForTimeout(1000);
+
+  // Le damos al boton de buscar para encontrar al empleado
+  await page.getByLabel('Change Employee Selection').getByRole('button', { name: ' Find' }).click();
+    await page.waitForTimeout(1000);
+
   await page.getByRole('row', { name: 'ID Last Name First Name' }).getByRole('checkbox').check();
   await page.getByRole('link', { name: ' SELECT' }).click();
 
   await page.waitForTimeout(1000);
 
-  await page.getByText('Rehire', { exact: true }).click();
+    const response1 = await page.goto(`${baseUrl}/CoreApp/TAndA/Index/344`);
+    expect(response1?.status()).toBe(200);
+
   await page.waitForTimeout(1000);
-  await page.locator('#txtRehireSearchSsn').click();
-  await page.locator('#txtRehireSearchSsn').fill(user.ssn); // El SSN sera la base de busqueda del usuario que queramos darle el pay code
-  await page.getByRole('button', { name: ' Search' }).click(); // Busca el usuario por SSN
-    await page.waitForTimeout(2000);
+  await page.getByRole('link', { name: '' }).click();
 
 
 
-
-    
-  await page.getByRole('link', { name: 'Timesheet' }).click();
-  await page.getByRole('row', { name: 'Fernando, Alvaro Fernando' }).getByRole('link').first().click(); // Reemplaza 'Fernando, Alvaro Fernando' por el nombre del usuario al que quieres añadir el pay code
+  await page.locator('tr:nth-child(4) > .FirstIn').click();
+  await page.locator('#FirstInTimePicker').fill('9:00 am');
   await page.locator('tr:nth-child(4) > .FirstOut').click();
-await page.waitForTimeout(1000);    
+  await page.locator('#FirstOutTimePicker').fill('14:00 pm');
+  await page.locator('tr:nth-child(4) > .SecondIn').click();
+  await page.locator('#SecondInTimePicker').fill('15:00 pm');
+  await page.locator('tr:nth-child(4) > .SecondOut').click();
+  await page.locator('#SecondOutTimePicker').fill('19:00 pm');
+
+  
+//
+  //await page.locator('tr:nth-child(3) > .FirstIn').click();
+  //await page.locator('#FirstInTimePicker').fill('9:00 am');
+  //await page.locator('tr:nth-child(3) > .FirstOut').click();
+  //await page.locator('#FirstOutTimePicker').fill('14:00 pm');
+  //await page.locator('tr:nth-child(3) > .SecondIn').click();
+  //await page.locator('#SecondInTimePicker').fill('15:00 pm');
+  //await page.locator('tr:nth-child(3) > .SecondOut').click();
+  //await page.locator('#SecondOutTimePicker').fill('19:00 pm');
+//
+//    await page.locator('tr:nth-child(5) > .FirstIn').click();
+//  await page.locator('#FirstInTimePicker').fill('9:00 am');
+//  await page.locator('tr:nth-child(5) > .FirstOut').click();
+//  await page.locator('#FirstOutTimePicker').fill('14:00 pm');
+//  await page.locator('tr:nth-child(5) > .SecondIn').click();
+//  await page.locator('#SecondInTimePicker').fill('15:00 pm');
+//  await page.locator('tr:nth-child(5) > .SecondOut').click();
+//  await page.locator('#SecondOutTimePicker').fill('19:00 pm');
+//
+//    await page.locator('tr:nth-child(6) > .FirstIn').click();
+//  await page.locator('#FirstInTimePicker').fill('9:00 am');
+//  await page.locator('tr:nth-child(6) > .FirstOut').click();
+//  await page.locator('#FirstOutTimePicker').fill('14:00 pm');
+//  await page.locator('tr:nth-child(6) > .SecondIn').click();
+//  await page.locator('#SecondInTimePicker').fill('15:00 pm');
+//  await page.locator('tr:nth-child(6) > .SecondOut').click();
+//  await page.locator('#SecondOutTimePicker').fill('19:00 pm');
+//
+//    await page.locator('tr:nth-child(7) > .FirstIn').click();
+//  await page.locator('#FirstInTimePicker').fill('9:00 am');
+//  await page.locator('tr:nth-child(7) > .FirstOut').click();
+//  await page.locator('#FirstOutTimePicker').fill('14:00 pm');
+//  await page.locator('tr:nth-child(7) > .SecondIn').click();
+//  await page.locator('#SecondInTimePicker').fill('15:00 pm');
+//  await page.locator('tr:nth-child(7) > .SecondOut').click();
+//  await page.locator('#SecondOutTimePicker').fill('19:00 pm');
+//
+//    await page.locator('tr:nth-child(8) > .FirstIn').click();
+//  await page.locator('#FirstInTimePicker').fill('9:00 am');
+//  await page.locator('tr:nth-child(8) > .FirstOut').click();
+//  await page.locator('#FirstOutTimePicker').fill('14:00 pm');
+//  await page.locator('tr:nth-child(8) > .SecondIn').click();
+//  await page.locator('#SecondInTimePicker').fill('15:00 pm');
+//  await page.locator('tr:nth-child(8) > .SecondOut').click();
+//  await page.locator('#SecondOutTimePicker').fill('19:00 pm');
 
 
-    await page.locator('tr:nth-child(4) > td:nth-child(3)').first().click();
-  await page.getByRole('option', { name: 'Vacation' }).click();
-  await page.getByRole('gridcell', { name: '0', exact: true }).click();
-  await page.locator('#PaycodeAmount').fill(user.FechaPayCode); // Rellena el campo con la fecha del pay code
-  await page.getByText('SAVE', { exact: true }).click();
+//await page.getByText('SAVE', { exact: true }).click();
 
 
+const [responseSave] = await Promise.all([
+      page.waitForResponse(res =>
+        res.url().includes('/UpdateTimecardDates') &&
+        res.request().method() === 'POST'
+      ),
+      page.getByText('SAVE', { exact: true }).click()
+    ]);
+
+
+const body = await responseSave.json();
+
+console.log('Respuesta del backend:', JSON.stringify(body, null, 2));
+console.log('Horarios esperados:', JSON.stringify(user.ponches, null, 2));
+
+for (const horarioEsperado of user.ponches) {
+  const encontrado = body?.Data?.some((dia: any) => 
+    dia.FirstIn === horarioEsperado.FirstIn &&
+    dia.FirstOut === horarioEsperado.FirstOut &&
+    dia.SecondIn === horarioEsperado.SecondIn &&
+    dia.SecondOut === horarioEsperado.SecondOut
+  );
+
+  expect(encontrado).toBeTruthy();
+}
+
+
+fetch("https://elysium.intechsol-pr.net/CoreApp/TAndA/ReadDailyTotals", {
+  "body": "sort=Id-asc&group=&aggregate=DailyAmount-sum~DailyHours-sum&filter=&emp_emplo=907&from=7%2F2%2F2025+12%3A00%3A00+AM&to=7%2F2%2F2025+12%3A00%3A00+AM&type=Daily",
+  "method": "POST"
+});
+sort: Id-asc
+group: 
+aggregate: DailyAmount-sum~DailyHours-sum
+filter: 
+emp_emplo: 907
+from: 6/30/2025 12:00:00 AM
+to: 6/30/2025 12:00:00 AM
+type: Daily
+
+
+
+// esperar a que se guarden los cambios y se actualice la página
+//await page.waitForTimeout(5000);
+// Tomar una captura de los cambios produciodos
+await page.screenshot({ path: 'screenshot.png', fullPage: true });
 
 });
 });
