@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test, expect, request } from '@playwright/test';
 import dotenv from 'dotenv';
 import fs from 'fs';
 import path from 'path';
@@ -139,18 +139,6 @@ for (const horarioEsperado of user.ponches) {
 }
 
 
-fetch("https://elysium.intechsol-pr.net/CoreApp/TAndA/ReadDailyTotals", {
-  "body": "sort=Id-asc&group=&aggregate=DailyAmount-sum~DailyHours-sum&filter=&emp_emplo=907&from=7%2F2%2F2025+12%3A00%3A00+AM&to=7%2F2%2F2025+12%3A00%3A00+AM&type=Daily",
-  "method": "POST"
-});
-sort: Id-asc
-group: 
-aggregate: DailyAmount-sum~DailyHours-sum
-filter: 
-emp_emplo: 907
-from: 6/30/2025 12:00:00 AM
-to: 6/30/2025 12:00:00 AM
-type: Daily
 
 
 
@@ -161,3 +149,20 @@ await page.screenshot({ path: 'screenshot.png', fullPage: true });
 
 });
 });
+
+
+//fetch("https://elysium.intechsol-pr.net/CoreApp/TAndA/ReadDailyTotals", {
+//  "body": "sort=Id-asc&group=&aggregate=DailyAmount-sum~DailyHours-sum&filter=&emp_emplo=907&from=7%2F2%2F2025+12%3A00%3A00+AM&to=7%2F2%2F2025+12%3A00%3A00+AM&type=Daily",
+//  "method": "POST"
+//});
+//sort: Id-asc
+//group: 
+//aggregate: DailyAmount-sum~DailyHours-sum
+//filter: 
+//emp_emplo: 907
+//from: 6/30/2025 12:00:00 AM
+//to: 6/30/2025 12:00:00 AM
+//type: Daily
+//
+
+
