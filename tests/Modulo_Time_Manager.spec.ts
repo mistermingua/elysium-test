@@ -24,6 +24,7 @@ test('test', async ({ page }) => {
   await page.getByRole('row', { name: 'ID Last Name First Name' }).getByRole('checkbox').check();
   await page.getByRole('link', { name: ' SELECT' }).click();
   
+  
   await page.waitForTimeout(2000);
 
   const response2 = await page.goto(`${baseUrl}/CoreApp/TAndA/Scheduler/345`);

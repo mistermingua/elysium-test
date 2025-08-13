@@ -10,7 +10,7 @@ if (!process.env.BASE_URL || !process.env.USER || !process.env.PASSWORD) {
 test.use({ storageState: 'storageState.json' });
 // Utiliza el estado de almacenamiento guardado en 'storageState.json' para mantener la sesión iniciada
 
-
+ 
 test.describe('Prueba HRMS', () => {
 test('Test HRMS', async ({ page }) => {
   const baseUrl = process.env.BASE_URL!; // Obtiene la URL base desde las variables de entorno

@@ -10,7 +10,7 @@ if (!process.env.BASE_URL || !process.env.USER || !process.env.PASSWORD) {
 
 test.use({ storageState: 'storageState.json' });
 // Utiliza el estado de almacenamiento guardado en 'storageState.json' para mantener la sesión iniciada
-
+ 
 
 // Carga de datos de usuarios desde un documetno externo .json
 const rawData = fs.readFileSync(path.join(__dirname, '../data/datosuser.json'), 'utf8'); // Lee el archivo JSON que contiene los datos del usuario

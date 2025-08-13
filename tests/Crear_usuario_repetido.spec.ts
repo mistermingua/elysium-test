@@ -274,6 +274,7 @@ await page.waitForTimeout(3000); // Esperar 3 segundos para que se cargue el per
 
   await page.waitForTimeout(1500); 
   
+  
   await page.locator('#EmpAddress').click();
   await page.locator('#EmpAddress').fill(user.address); // Poner aqui la direccion del usuario que se va a crear
   
