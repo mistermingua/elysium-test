@@ -14,6 +14,12 @@ test('test', async ({ page }) => {
   expect(response?.status()).toBe(200);
   await page.waitForTimeout(2000);
 
+  // Comentar o decomentar las dos siguientes lineas segun el entorno que se quiera usar (esto pasaba en pre)
+      //await page.getByRole('gridcell', { name: '5385' }).click();
+      //await page.getByRole('link', { name: ' SELECT' }).click();
+
+    //await page.waitForTimeout(3000);
+
   await page.locator('div').filter({ hasText: /^Accruals$/ }).locator('span').click();
   await page.getByText('» Taken Licenses').click();
   await page.getByRole('button', { name: 'Close' }).click();

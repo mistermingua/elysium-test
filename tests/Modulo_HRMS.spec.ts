@@ -19,6 +19,13 @@ test('Test HRMS', async ({ page }) => {
 
   await page.waitForTimeout(2000);
 
+  // Comentar o decomentar las dos siguientes lineas segun el entorno que se quiera usar  (esto pasaba en pre)
+      //await page.getByRole('gridcell', { name: '5385' }).click();
+      //await page.getByRole('link', { name: ' SELECT' }).click();
+
+    // await page.waitForTimeout(3000);
+
+
   await page.getByText('Miguel Torres').hover(); // Aqui se deberia poner otra cosa, no mi nombre
   
   await page.getByText('Employee Selection', { exact: true }).click();

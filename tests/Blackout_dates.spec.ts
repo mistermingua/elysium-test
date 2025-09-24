@@ -18,6 +18,13 @@ test('Creacion Blackout Dates', async ({ page }) => {
   const response = await page.goto(`${baseUrl}/MyEss/RequestsGraph/Index/1266`); // Navega a la página de inicio de sesión usando la URL base
   expect(response?.status()).toBe(200);
 await page.waitForTimeout(2000); // Espera 2 segundos para que se cargue la página
+
+  // Comentar o decomentar las dos siguientes lineas segun el entorno que se quiera usar (esto pasaba en pre)
+      //await page.getByRole('gridcell', { name: '5385' }).click();
+      //await page.getByRole('link', { name: ' SELECT' }).click();
+
+    //await page.waitForTimeout(3000);
+
   await page.getByRole('button', { name: 'Blackout Dates' }).click();
   await page.waitForTimeout(2000); // Espera 2 segundos para que se cargue la página
 

@@ -16,7 +16,7 @@ test.use({ storageState: 'storageState.json' });
 test('Creacion de Payroll de clase Normal y semanal', async ({ page }) => {
 // Hacemos que el timeout de la prueba sea de 120 segundos
   test.setTimeout(120000); // Establece un tiempo de espera de 120 segundos para la prueba
-    const baseUrl = process.env.BASE_URL!; // Obtiene la URL base desde las variables de entorno
+    const baseUrl = process.env.BASE_URL!; // Obtiene la URL base desde las variables de entorno    
   const response = await page.goto(`${baseUrl}/CoreApp/Payroll/Index/346`); // Navega a la página de inicio de sesión usando la URL base
   expect(response?.status()).toBe(200);
 
@@ -24,6 +24,9 @@ test('Creacion de Payroll de clase Normal y semanal', async ({ page }) => {
         state: 'visible',
         timeout: 5000 
     });    
+
+      await page.getByRole('gridcell', { name: '5385' }).click();
+  await page.getByRole('link', { name: ' SELECT' }).click();
 
 
     // En el caso de que queramos seleccionar todos los empleados tenemos que descomentar esto
@@ -36,7 +39,7 @@ test('Creacion de Payroll de clase Normal y semanal', async ({ page }) => {
   //await page.getByRole('link', { name: ' SELECT' }).click();
 
 
-await page.waitForTimeout(2000);
+await page.waitForTimeout(3000);
 
 
   await page.getByRole('link', { name: ' ADD NEW PAYROLL BATCH' }).click();
@@ -74,19 +77,13 @@ await page.waitForTimeout(2000);
   await page.waitForTimeout(2000); // Esperamos a que se cargue la lista de empleados
   await page.getByRole('row', { name: 'ID Last Name First Name' }).getByRole('checkbox').check();
   await page.getByRole('link', { name: ' SELECT' }).click();
-
-//Capturamos el numero de periodo de la nomina
-const numeroPeriodo = await page.getByRole('textbox', { name: 'Period Period Payroll Period' }).inputValue();
-console.log(`Número de periodo: ${numeroPeriodo}`);
-
+  // Hacemos la selección del empleado que se quiera
   await page.getByRole('button', { name: ' Launch' }).click(); // Lanzamos el proceso de creación de la nómina
 
   await page.waitForTimeout(2000); // Esperamos a que se cargue la página de creación de la nómina
   
-  // Localizamos la fila de la nómina usando el número de periodo capturado
-const filaNomina = page.locator('tr').filter({ hasText: numeroPeriodo });
 
-  const grossAntesText = await filaNomina.getByRole('gridcell', { name: /\$\d+(\.\d{2})?/ }).first().innerText(); 
+  const grossAntesText = await page.getByRole('gridcell', { name: /\$\d+(\.\d{2})?/ }).first().innerText(); 
     const grossAntes = parseFloat(grossAntesText.replace(/[^0-9.-]/g, ''));
     console.log(`Gross antes: ${grossAntes}`);
 
@@ -125,25 +122,20 @@ await page.waitForTimeout(2000);
 // Usamos expect.poll para esperar a que el valor de Gross se actualice
 // Esto es necesario porque el valor de Gross se recalcula después de guardar y calcular
 await expect.poll(async () => { // Función que se ejecuta periódicamente para comprobar el valor de Gross
-  const text = await filaNomina.getByRole('gridcell', { name: /\$\d+(\.\d{2})?/ }).first().innerText(); 
+  const text = await page.getByRole('gridcell', { name: /\$\d+(\.\d{2})?/ }).first().innerText(); 
   console.log('Gross recalculado:', text);
   return parseFloat(text.replace(/[^0-9.-]/g, ''));
 },).not.toBe(grossAntes);
 
 // Si el valor de Gross no se actualiza, el test fallará
 // Si todo funciona correctamente se captura el nuevo valor de Gross
-const grossDespuesText = await filaNomina.getByRole('gridcell', { name: /\$\d+(\.\d{2})?/ }).first().innerText();
+const grossDespuesText = await page.getByRole('gridcell', { name: /\$\d+(\.\d{2})?/ }).first().innerText();
 const grossDespues = parseFloat(grossDespuesText.replace(/[^0-9.-]/g, ''));
 console.log(`Gross después: ${grossDespues}`);
 
     // Finalmente comparamos el valor de Gross antes y después de los cambios
     expect(grossDespues).toBeGreaterThan(grossAntes);
   
-// Recalculamos la nomina
-  await page.getByRole('button', { name: '' }).click();
-  await page.getByRole('button', { name: ' Ok' }).click();
-
-
     // Cerramos la nomina
   await page.getByRole('button', { name: '' }).first().click();
   await page.getByRole('button', { name: ' Ok' }).click();
@@ -152,7 +144,6 @@ console.log(`Gross después: ${grossDespues}`);
   await page.getByRole('button', { name: '' }).first().click();
   await page.waitForTimeout(2000); // Esperamos a que se cargue la página de registro de nómina
   await page.getByRole('button', { name: ' Close' }).click();
-
 
 
   // Continuamos con la generacion de reportes

@@ -68,7 +68,7 @@ await page.waitForTimeout(2000);
   // Esperamos a que se abra la ventana de selección de empleados
   await page.waitForTimeout(2000);
   await page.locator('#txtHyperfinCondition').click(); // Hacemos click en el campo de búsqueda de empleados
-  await page.locator('#txtHyperfinCondition').fill('Swift'); // Cambiamos el nombre del empleado por el que se quiera buscar
+  await page.locator('#txtHyperfinCondition').fill('Ponce'); // Cambiamos el nombre del empleado por el que se quiera buscar
 
 // Le damos al boton de buscar para encontrar al empleado
   await page.getByLabel('Change Employee Selection').getByRole('button', { name: ' Find' }).click();
@@ -77,12 +77,19 @@ await page.waitForTimeout(2000);
   await page.getByRole('row', { name: 'ID Last Name First Name' }).getByRole('checkbox').check();
   await page.getByRole('link', { name: ' SELECT' }).click();
   // Hacemos la selección del empleado que se quiera
+
+  //Capturamos el numero de periodo de la nomina
+const numeroPeriodo = await page.getByRole('textbox', { name: 'Period Period Payroll Period' }).inputValue();
+console.log(`Número de periodo: ${numeroPeriodo}`);
+
   await page.getByRole('button', { name: ' Launch' }).click(); // Lanzamos el proceso de creación de la nómina
 
   await page.waitForTimeout(2000); // Esperamos a que se cargue la página de creación de la nómina
   
+  // Localizamos la fila de la nómina usando el número de periodo capturado
+const filaNomina = page.locator('tr').filter({ hasText: numeroPeriodo });
 
-  const grossAntesText = await page.getByRole('gridcell', { name: /\$\d+(\.\d{2})?/ }).first().innerText(); 
+  const grossAntesText = await filaNomina.getByRole('gridcell', { name: /\$\d+(\.\d{2})?/ }).first().innerText(); 
     const grossAntes = parseFloat(grossAntesText.replace(/[^0-9.-]/g, ''));
     console.log(`Gross antes: ${grossAntes}`);
 
@@ -121,14 +128,14 @@ await page.waitForTimeout(2000);
 // Usamos expect.poll para esperar a que el valor de Gross se actualice
 // Esto es necesario porque el valor de Gross se recalcula después de guardar y calcular
 await expect.poll(async () => { // Función que se ejecuta periódicamente para comprobar el valor de Gross
-  const text = await page.getByRole('gridcell', { name: /\$\d+(\.\d{2})?/ }).first().innerText(); 
+  const text = await filaNomina.getByRole('gridcell', { name: /\$\d+(\.\d{2})?/ }).first().innerText(); 
   console.log('Gross recalculado:', text);
   return parseFloat(text.replace(/[^0-9.-]/g, ''));
 },).not.toBe(grossAntes);
 
 // Si el valor de Gross no se actualiza, el test fallará
 // Si todo funciona correctamente se captura el nuevo valor de Gross
-const grossDespuesText = await page.getByRole('gridcell', { name: /\$\d+(\.\d{2})?/ }).first().innerText();
+const grossDespuesText = await filaNomina.getByRole('gridcell', { name: /\$\d+(\.\d{2})?/ }).first().innerText();
 const grossDespues = parseFloat(grossDespuesText.replace(/[^0-9.-]/g, ''));
 console.log(`Gross después: ${grossDespues}`);
 

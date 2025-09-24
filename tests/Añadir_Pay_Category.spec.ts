@@ -19,6 +19,12 @@ test('Test Pay category', async ({ page }) => {
 
   await page.waitForTimeout(1000);
 
+    // Comentar o decomentar las dos siguientes lineas segun el entorno que se quiera usar  (esto pasaba en pre)
+      //await page.getByRole('gridcell', { name: '5385' }).click();
+      //await page.getByRole('link', { name: ' SELECT' }).click();
+
+    //await page.waitForTimeout(3000);
+
   //await page.getByRole('gridcell', { name: '$30.00' }).click();
 
     // Lo primero es guardar el valor de Gross antes de hacer cambios

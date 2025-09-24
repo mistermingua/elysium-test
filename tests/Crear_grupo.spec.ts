@@ -26,7 +26,11 @@ test('test', async ({ page }) => {
     const response = await page.goto(`${baseUrl}/CoreApp/Setup/Index/358`); 
     expect(response?.status()).toBe(200); 
 
+  // Comentar o decomentar las dos siguientes lineas segun el entorno que se quiera usar (esto pasaba en pre)
+      //await page.getByRole('gridcell', { name: '5385' }).click();
+      //await page.getByRole('link', { name: ' SELECT' }).click();
 
+    //await page.waitForTimeout(3000);
 
 //await expect(page.getByRole('textbox', { name: 'Username' })).toBeVisible();
 //   await page.getByRole('textbox', { name: 'Username' }).click();

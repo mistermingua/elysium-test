@@ -2,7 +2,7 @@
   "cookies": [
     {
       "name": "ASP.NET_SessionId",
-      "value": "eeru0uu124qs325mjjtvgt3n",
+      "value": "1mzmulliqaf01dyjg1kypwjv",
       "domain": "elyp.intechsol-pr.net",
       "path": "/",
       "expires": -1,
@@ -15,7 +15,17 @@
       "value": "0",
       "domain": "elyp.intechsol-pr.net",
       "path": "/",
-      "expires": 1789678593.891071,
+      "expires": 1793265057.314386,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "selectedCompany169028",
+      "value": "1",
+      "domain": "elyp.intechsol-pr.net",
+      "path": "/",
+      "expires": 1790241063.56343,
       "httpOnly": false,
       "secure": false,
       "sameSite": "Lax"

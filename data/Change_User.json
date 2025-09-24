@@ -1,0 +1,26 @@
+{
+  "lastName": "Carlos",
+  "firstName": "Roberto",
+  "postalAddress": "Calle de Velazquez 1",
+  "postalZipCode": "28032-20205",
+  "country": "Somalia",
+  "birthDate": "3/29/2004",
+  "ssn": "111-11-111117",
+  "civilStatus": "Single",
+  "email": "hola12345@gmail.com",
+  "hireDate": "3/29/2024",
+  "contractType": "Part-Time",
+  "payrollGroup": "BIWEEKLY",
+  "paymentType": "Cash",
+  "profile": "Portal Administrator",
+  "LegalStatus": "Citizen of the United States",
+  "badgeNumber": "14",
+  "Supervisor": "Alvarado, Diego (103)",
+  "scheduleGroup": "8am-4:30pm-B-COMPANY",
+  "acrualGroup": "Law 180",
+  "licenseGroup": "Customer Service",
+  "dateSalary": "08-20-2025",
+  "hourlyRate": "10.00",
+  "employeeId": "45"
+
+}

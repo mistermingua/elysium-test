@@ -24,6 +24,12 @@ test('Creacion de Payroll de clase Normal y semanal', async ({ page }) => {
         timeout: 5000 
     });    
 
+      // Comentar o decomentar las dos siguientes lineas segun el entorno que se quiera usar (esto pasaba en pre)
++      //await page.getByRole('gridcell', { name: '5385' }).click();
++      //await page.getByRole('link', { name: ' SELECT' }).click();
+
+
+    //await page.waitForTimeout(3000);
 
     // En el caso de que queramos seleccionar todos los empleados tenemos que descomentar esto
 
@@ -34,10 +40,7 @@ test('Creacion de Payroll de clase Normal y semanal', async ({ page }) => {
   //await page.getByRole('row', { name: 'ID Last Name First Name' }).getByRole('checkbox').check();
   //await page.getByRole('link', { name: ' SELECT' }).click();
 
-    await page.getByRole('gridcell', { name: 'DEMO PMO' }).click();
-  await page.getByRole('link', { name: ' SELECT' }).click();
 
-await page.waitForTimeout(2000);
 
 
   await page.getByRole('link', { name: ' ADD NEW PAYROLL BATCH' }).click();

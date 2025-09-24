@@ -27,7 +27,11 @@ test('test', async ({ page }) => {
     expect(response?.status()).toBe(200);
 
     await page.waitForTimeout(1000);
+  // Comentar o decomentar las dos siguientes lineas segun el entorno que se quiera usar (esto pasaba en pre)
+      //await page.getByRole('gridcell', { name: '5385' }).click();
+      //await page.getByRole('link', { name: ' SELECT' }).click();
 
+    //await page.waitForTimeout(3000);
 
   await page.getByText('Miguel Torres').hover(); // Aqui se deberia poner otra cosa, no mi nombre
   
@@ -35,7 +39,7 @@ test('test', async ({ page }) => {
   await page.waitForTimeout(1000);
    await page.locator('#txtHyperfinCondition').click(); // Hacemos click en el campo de búsqueda de empleados
     await page.waitForTimeout(1000);
-   await page.locator('#txtHyperfinCondition').fill('Swift'); // Cambiamos el nombre del empleado por el que se quiera buscar
+   await page.locator('#txtHyperfinCondition').fill('Ponce'); // Cambiamos el nombre del empleado por el que se quiera buscar
   await page.waitForTimeout(1000);
   // Le damos al boton de buscar para encontrar al empleado
   await page.getByLabel('Change Employee Selection').getByRole('button', { name: ' Find' }).click();
@@ -94,7 +98,7 @@ const [responseSave] = await Promise.all([
       page.getByText('SAVE', { exact: true }).click()
     ]);
 
-    // >>>> Ahora extraes el body y verificas que los datos del .json están en la respuesta
+    // Ahora se extrae el body y se verifica que los datos del .json están en la respuesta
     const body = await responseSave.json();
 
 console.log('Respuesta del backend:', JSON.stringify(body, null, 2));

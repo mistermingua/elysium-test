@@ -30,6 +30,13 @@ test('Verificacion de todas las URLs ', async ({ page }) => {
 
   await page.waitForTimeout(2000); // Deja tiempo a que cargue el sistema
 
+
+  // Comentar o decomentar las dos siguientes lineas segun el entorno que se quiera usar (esto pasaba en pre)
+      //await page.getByRole('gridcell', { name: '5385' }).click();
+      //await page.getByRole('link', { name: ' SELECT' }).click();
+
+    //await page.waitForTimeout(3000);
+
 //const errores: string[] = []; // Array para almacenar errores de estado de las URLs
 
   for (const ruta of urls) { // Itera sobre cada ruta en el archivo JSON

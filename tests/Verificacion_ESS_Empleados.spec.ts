@@ -18,7 +18,10 @@ test('Test Pay category', async ({ page }) => {
   expect(response?.status()).toBe(200);
 
   await page.waitForTimeout(1000);
+      await page.getByRole('gridcell', { name: '5385' }).click();
+  await page.getByRole('link', { name: ' SELECT' }).click();
 
+    await page.waitForTimeout(3000);
   // Modulos que no deberian aparecer en la pagina principal de ESS
 const blacklistMain = [
     'PAYROLL MANAGER',

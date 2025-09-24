@@ -36,6 +36,13 @@ test.setTimeout(120000); // Establece un tiempo de espera de 120 segundos para l
     const response = await page.goto(`${baseUrl}/CoreApp/People/AddEmployee`); // ver los eventos que se disparan cuando termina de cargar la url?
     expect(response?.status()).toBe(200); 
 
+
+  // Comentar o decomentar las dos siguientes lineas segun el entorno que se quiera usar  (esto pasaba en pre)
+      //await page.getByRole('gridcell', { name: '5385' }).click();
+      //await page.getByRole('link', { name: ' SELECT' }).click();
+
+    //await page.waitForTimeout(3000);
+
 // Esto asegura que se ha cargado correctamente el HTML, Imagenes, CSS, JS, etc. de la página antes de continuar con la prueba
     await page.waitForLoadState('load'); 
 // Pero esto no asegura que peticiones AJAX hayan terminado de cargar, por lo que se debe esperar a que las respuestas de las peticiones AJAX sean 200 OK antes de continuar con la prueba

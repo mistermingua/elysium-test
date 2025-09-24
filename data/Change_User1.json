@@ -1,0 +1,35 @@
+{
+  "lastName": "Alejandro",
+  "firstName": "Rubio",
+  "postalAddress": "Calle de Velazquez 1",
+  "postalZipCode": "25032-20002",
+  "country": "Spain",
+  "ssn": "111-11-111117",
+    "birthDate": "3/29/2004",
+  "civilStatus": "Single",
+  "email": "hola@gmail.com",
+
+
+"employeeId": "15",
+  "userName": "15",
+  "profile": "Portal Administrator",
+
+"status": "Active",
+  "contractType": "Part-Time",
+
+  "hireDate": "2/13/2024",
+
+  "payrollGroup": "BIWEEKLY",
+
+  "paymentType": "Cash",
+
+"LegalStatus": "Lawful Permanent Resident",
+  "badgeNumber": "15",
+  "supervisor": "Zambon, Mario F (1991007)",
+  "scheduleGroup": "Mantenimiento",
+  "acrualGroup": "Hourly",
+  "licenseGroup": "Customer Service",
+  "dateSalary" : "2/13/2024",
+  "hourlyRate": "3"
+
+}

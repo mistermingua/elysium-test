@@ -15,6 +15,13 @@ test('Payroll', async ({ page }) => {
   const response = await page.goto(`${baseUrl}/CoreApp/Payroll/Index/346`);
   expect(response?.status()).toBe(200);
   await page.waitForTimeout(2000); // Espera 2 segundos para que se cargue la página
+
+  // Comentar o decomentar las dos siguientes lineas segun el entorno que se quiera usar (esto pasaba en pre)
+      //await page.getByRole('gridcell', { name: '5385' }).click();
+      //await page.getByRole('link', { name: ' SELECT' }).click();
+
+    //await page.waitForTimeout(3000);
+
   await page.getByText('Calendar').click();
   await page.waitForTimeout(2000);
 });

@@ -35,6 +35,12 @@ test('Test Modulos y errores en javascript', async ({ page }) => {
   expect(response?.status()).toBe(200);
 
   await page.waitForTimeout(1000);
+  // Comentar o decomentar las dos siguientes lineas segun el entorno que se quiera usar (esto pasaba en pre)
+      //await page.getByRole('gridcell', { name: '5385' }).click();
+      //await page.getByRole('link', { name: ' SELECT' }).click();
+
+    //await page.waitForTimeout(3000);
+
 
     const response1 = await page.goto(`${baseUrl}/CoreApp/People/Index/917`); // Navega a la página de inicio de sesión usando la URL base
   expect(response1?.status()).toBe(200);

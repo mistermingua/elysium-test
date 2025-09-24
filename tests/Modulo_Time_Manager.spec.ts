@@ -11,12 +11,17 @@ test.use({ storageState: 'storageState.json' });
 
 
 test('test', async ({ page }) => {
+    test.setTimeout(120000); // Establece un tiempo de espera de 120 segundos para la prueba
   const baseUrl = process.env.BASE_URL!;
   const response = await page.goto(`${baseUrl}/CoreApp/Dashboard/Index/342`);
   expect(response?.status()).toBe(200);
   
   await page.waitForTimeout(2000);
+  // Comentar o decomentar las dos siguientes lineas segun el entorno que se quiera usar (esto pasaba en pre)
+      //await page.getByRole('gridcell', { name: '5385' }).click();
+      //await page.getByRole('link', { name: ' SELECT' }).click();
 
+    await page.waitForTimeout(3000);
   await page.getByText('Miguel Torres').hover(); // Se debe cambiar por el nombre del usuario que se esté probando
 
   await page.getByText('Employee Selection', { exact: true }).click();

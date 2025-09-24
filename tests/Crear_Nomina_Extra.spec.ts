@@ -20,7 +20,11 @@ test('Creacion de Payroll Extraordinary contando con Christmas Bonus y Performan
   const response = await page.goto(`${baseUrl}/CoreApp/Payroll/Index/346`); // Navega a la página de inicio de sesión usando la URL base
   expect(response?.status()).toBe(200);
 
- 
+   // Comentar o decomentar las dos siguientes lineas segun el entorno que se quiera usar
+      await page.getByRole('gridcell', { name: '5385' }).click();
+      await page.getByRole('link', { name: ' SELECT' }).click();
+
+    await page.waitForTimeout(3000);
 
     // En el caso de que queramos seleccionar todos los empleados tenemos que descomentar esto
 
